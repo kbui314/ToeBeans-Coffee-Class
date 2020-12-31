@@ -8,9 +8,16 @@ class UserService {
             userId: 0,
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.lastName,
+            username: user.lastName,
             password: user.password,
             phone: user.phone,
+        });
+    }
+
+    loginUser(email, password) {
+        return axios.post(`${API_URL}/login`, {
+            username: email,
+            password: password,
         });
     }
 }

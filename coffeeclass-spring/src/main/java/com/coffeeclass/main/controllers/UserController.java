@@ -1,14 +1,10 @@
 package com.coffeeclass.main.controllers;
 
-import java.net.URI;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.coffeeclass.main.models.User;
 import com.coffeeclass.main.services.UserService;
@@ -20,9 +16,14 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@PostMapping("/users")
+	@PostMapping("/signup")
 	public String createNewUser(@RequestBody User user) {
 		return userService.createNewUser(user);
+	}
+	
+	@GetMapping("/hello")
+	public String hello() {
+		return "hello world";
 	}
 	
 //	@PostMapping("/users")

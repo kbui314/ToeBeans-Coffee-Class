@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import UserService from "../../services/UserService";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -13,6 +14,9 @@ export default function Login() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        UserService.loginUser(email, password).then((response) => {
+            console.log(response);
+        });
     }
 
     return (
