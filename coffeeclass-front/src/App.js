@@ -1,38 +1,42 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import { Route, useHistory } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
+import LocalStorageService from "./services/LocalStorageService";
 import Login from "./components/login/Login";
 import SignUp from "./components/signup/Signup";
+import ClassList from "./components/classlist/ClassList";
 
-class App extends Component {
-    render() {
-        return (
-            <Router>
-                <Route exact path="/login" component={Login} />
-                <Route path="/signup" component={SignUp} />
-            </Router>
-        );
-    }
+export default function App() {
+    const history = useHistory();
+    const localStorageService = LocalStorageService.getService();
+    axios.interceptors.request.use(
+        (config) => {
+            const token = localStorageService.getToken();
+            if (token) {
+                config.headers["Authorization"] = "Bearer" + token;
+            }
+            return config;
+        },
+        (error) => {
+            Promise.reject(error);
+        }
+    );
+
+    axios.interceptors.response.use(
+        (response) => {
+            return response;
+        },
+        (error) => {
+            history.push("/login");
+            // Promise.reject(error);
+        }
+    );
+    return (
+        <div>
+            <Route exact path="/login" component={Login} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/classes" component={ClassList} />
+        </div>
+    );
 }
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-export default App;

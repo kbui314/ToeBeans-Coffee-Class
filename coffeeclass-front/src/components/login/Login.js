@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
@@ -7,6 +8,7 @@ import UserService from "../../services/UserService";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const history = useHistory();
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -15,7 +17,8 @@ export default function Login() {
     function handleSubmit(event) {
         event.preventDefault();
         UserService.loginUser(email, password).then((response) => {
-            console.log(response);
+            localStorage.setItem("access_token", response.data);
+            history.push("/classes");
         });
     }
 
