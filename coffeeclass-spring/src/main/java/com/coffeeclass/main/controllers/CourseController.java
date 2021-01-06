@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coffeeclass.main.models.Course;
@@ -19,5 +19,10 @@ public class CourseController {
 	@GetMapping("/classes")
 	public List<Course> getClassList() {
 		return courseService.getCourseList();
+	}
+	
+	@GetMapping("/classes/{id}")
+	public Course getClass(@PathVariable int id) {
+		return courseService.getCourse(id);
 	}
 }

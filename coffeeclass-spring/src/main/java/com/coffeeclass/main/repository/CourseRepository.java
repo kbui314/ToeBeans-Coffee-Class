@@ -8,4 +8,5 @@ import com.coffeeclass.main.models.Course;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Integer>{
 
+	Course findById(int courseId);
 }
