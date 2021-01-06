@@ -1,6 +1,11 @@
 import React from "react";
-import "./class.css";
+import "./Class.css";
 
-export default function Class() {
-    return <h1>Class Component</h1>;
+export default function Class(props) {
+    return (
+        <tr key={props.class.courseId}>
+            <td>{props.class.courseId}</td>
+            <td>{props.class.description}</td>
+        </tr>
+    );
 }

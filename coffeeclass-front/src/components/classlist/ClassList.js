@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ClassService from "../../services/ClassService";
+import Class from "../class/Class";
 import "./ClassList.css";
 
 export default function ClassList() {
@@ -9,7 +10,7 @@ export default function ClassList() {
 
     function refreshClass() {
         ClassService.getClassList().then((response) => {
-            if (response != undefined) {
+            if (response !== undefined) {
                 setClassList(response.data);
             }
         });
@@ -37,12 +38,7 @@ export default function ClassList() {
                     </thead>
                     <tbody>
                         {classList.map((e) => {
-                            return (
-                                <tr key={e.courseId}>
-                                    <td>{e.courseId}</td>
-                                    <td>{e.description}</td>
-                                </tr>
-                            );
+                            return <Class class={e} />;
                         })}
                     </tbody>
                 </table>
