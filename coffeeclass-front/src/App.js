@@ -29,7 +29,7 @@ export default function App() {
         },
         (error) => {
             history.push("/login");
-            // Promise.reject(error);
+            Promise.reject(error);
         }
     );
     return (
