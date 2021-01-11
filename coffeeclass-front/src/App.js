@@ -6,6 +6,7 @@ import LocalStorageService from "./services/LocalStorageService";
 import Login from "./components/login/Login";
 import SignUp from "./components/signup/Signup";
 import ClassList from "./components/classlist/ClassList";
+import Class from "./components/class/Class";
 
 export default function App() {
     const history = useHistory();
@@ -37,6 +38,7 @@ export default function App() {
             <Route exact path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/classes" component={ClassList} />
+            <Route path="/classes/:id" component={Class} />
         </div>
     );
 }
