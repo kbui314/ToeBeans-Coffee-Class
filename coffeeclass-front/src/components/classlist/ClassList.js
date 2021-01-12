@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ClassService from "../../services/ClassService";
-// import Class from "../class/Class";
 import "./ClassList.css";
 
 export default function ClassList() {
@@ -17,7 +16,7 @@ export default function ClassList() {
     }
 
     function viewCourse(id) {
-        history.push(`/classes/${id}`);
+        history.push(`/class/${id}`);
     }
 
     useEffect(() => {
@@ -42,14 +41,14 @@ export default function ClassList() {
                     </thead>
                     <tbody>
                         {classList.map((e) => {
-                            // return <Class class={e} />;
                             return (
                                 <tr
                                     key={e.courseId}
-                                    onClick={viewCourse(e.courseId)}
+                                    onClick={() => viewCourse(e.courseId)}
+                                    className="course"
                                 >
-                                    <td>e.courseId</td>
-                                    <td>e.title</td>
+                                    <td>{e.courseId}</td>
+                                    <td>{e.title}</td>
                                 </tr>
                             );
                         })}

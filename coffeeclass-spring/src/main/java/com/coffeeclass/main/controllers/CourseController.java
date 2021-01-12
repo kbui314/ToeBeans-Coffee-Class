@@ -23,8 +23,9 @@ public class CourseController {
 	}
 	
 	@GetMapping("/classes/{id}")
-	public Course getClass(@PathVariable int id) {
-		return courseService.getCourse(id);
+	public Course getClass(@PathVariable String id) {
+		return courseService.getCourse(Integer.parseInt(id));
+//		return null;
 	}
 	
 	@PostMapping("/classes/register/{id}")

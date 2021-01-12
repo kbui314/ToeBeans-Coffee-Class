@@ -38,7 +38,7 @@ export default function App() {
             <Route exact path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/classes" component={ClassList} />
-            <Route path="/classes/:id" component={Class} />
+            <Route path="/class/:id" component={Class} />
         </div>
     );
 }
