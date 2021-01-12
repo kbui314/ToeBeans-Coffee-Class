@@ -4,8 +4,9 @@ import ClassService from "../../services/ClassService";
 import "./ClassList.css";
 
 export default function ClassList() {
-    const [classList, setClassList] = useState([]);
     const history = useHistory();
+    const [classList, setClassList] = useState([]);
+    const [userClassList, setUserClassList] = useState([]);
 
     function refreshClass() {
         ClassService.getClassList().then((response) => {
@@ -19,12 +20,21 @@ export default function ClassList() {
         history.push(`/class/${id}`);
     }
 
+    function refreshUserClass() {
+        ClassService.getUserClasses().then((response) => {
+            if (response !== undefined) {
+                setUserClassList(response.data);
+            }
+        });
+    }
+
     useEffect(() => {
         const token = localStorage.getItem("access_token");
         if (token == null) {
             history.push("/login");
         } else {
             refreshClass();
+            refreshUserClass();
         }
     }, [history]);
 
@@ -47,6 +57,27 @@ export default function ClassList() {
                                     onClick={() => viewCourse(e.courseId)}
                                     className="course"
                                 >
+                                    <td>{e.courseId}</td>
+                                    <td>{e.title}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
+            <div className="container">
+                <h2>Upcoming Classes</h2>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Class Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {userClassList.map((e) => {
+                            return (
+                                <tr key={e.courseId} className="course">
                                     <td>{e.courseId}</td>
                                     <td>{e.title}</td>
                                 </tr>

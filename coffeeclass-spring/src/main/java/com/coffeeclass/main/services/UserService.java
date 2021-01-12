@@ -32,4 +32,16 @@ public class UserService {
 		return String.valueOf(userRepository.save(new User(user)).getUserid());
 	}
 	
+	public User getUser(String username) {
+		try {
+			return userRepository.findByUsername(username);
+		}catch(Exception e) {
+			return new User();
+		}
+	}
+	
+	public void saveUser(User user) {
+		userRepository.save(user);
+	}
+	
 }

@@ -1,8 +1,10 @@
 package com.coffeeclass.main.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,11 +27,15 @@ public class CourseController {
 	@GetMapping("/classes/{id}")
 	public Course getClass(@PathVariable String id) {
 		return courseService.getCourse(Integer.parseInt(id));
-//		return null;
 	}
 	
 	@PostMapping("/classes/register/{id}")
-	public String registerForCourse(@PathVariable int id) {
-		return null;
+	public String registerForCourse(@PathVariable int id, Authentication authentication) {
+		return courseService.registration(id, authentication.getName());
+	}
+	
+	@GetMapping("/classes/user")
+	public Set<Course> getUserCourse(Authentication authentication){
+		return courseService.getUserCourseList(authentication.getName());
 	}
 }

@@ -10,6 +10,14 @@ class ClassService {
     getClass(courseId) {
         return axios.get(`${API_URL}/${courseId.id}`);
     }
+
+    postRegistration(courseId) {
+        return axios.post(`${API_URL}/register/${courseId}`);
+    }
+
+    getUserClasses() {
+        return axios.get(`${API_URL}/user`);
+    }
 }
 
 export default new ClassService();
