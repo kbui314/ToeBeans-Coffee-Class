@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ClassService from "../../services/ClassService";
+import NavBar from "../navbar/Navbar";
 import "./ClassList.css";
 
 export default function ClassList() {
@@ -40,6 +41,7 @@ export default function ClassList() {
 
     return (
         <div>
+            <NavBar />
             <div className="container">
                 <h1>Class List</h1>
                 <table className="table">

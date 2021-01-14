@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useParams, useHistory } from "react-router";
 import ClassService from "../../services/ClassService";
+import NavBar from "../navbar/Navbar";
 import "./Class.css";
 
 export default function Class() {
@@ -35,7 +36,8 @@ export default function Class() {
     });
 
     return (
-        <div>
+        <Container>
+            <NavBar />
             <h1>Course Details</h1>
             <h2>{courses.courseId}</h2>
             <h4>{courses.description}</h4>
@@ -46,6 +48,6 @@ export default function Class() {
             >
                 Register
             </Button>
-        </div>
+        </Container>
     );
 }
