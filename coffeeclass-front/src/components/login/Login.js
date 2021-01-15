@@ -19,8 +19,10 @@ export default function Login() {
     function handleSubmit(event) {
         event.preventDefault();
         UserService.loginUser(email, password).then((response) => {
-            localStorage.setItem("access_token", response.data);
-            history.push("/classes");
+            if (response !== undefined) {
+                localStorage.setItem("access_token", response.data);
+                history.push("/classes");
+            }
         });
     }
 

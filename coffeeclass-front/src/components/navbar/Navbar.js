@@ -23,7 +23,7 @@ export default function NavBar() {
                     </Nav>
                     <Nav className="ml-auto">
                         {isLogin ? (
-                            <Nav.Link href="#login">Logout</Nav.Link>
+                            <Nav.Link href="#logout">Logout</Nav.Link>
                         ) : (
                             <Nav.Link href="#login">Login</Nav.Link>
                         )}
