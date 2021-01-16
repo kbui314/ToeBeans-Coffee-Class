@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 export default function NavBar() {
     const [isLogin, setIsLogin] = useState(false);
+    const history = useHistory();
+
+    function logout() {
+        localStorage.clear();
+        history.push("/login");
+    }
+
+    function login() {
+        history.push("/login");
+    }
 
     useEffect(() => {
         if (localStorage.getItem("access_token")) {
@@ -23,9 +34,13 @@ export default function NavBar() {
                     </Nav>
                     <Nav className="ml-auto">
                         {isLogin ? (
-                            <Nav.Link href="#logout">Logout</Nav.Link>
+                            <Nav.Link onClick={() => logout()} href="">
+                                Logout
+                            </Nav.Link>
                         ) : (
-                            <Nav.Link href="#login">Login</Nav.Link>
+                            <Nav.Link onClick={() => login()} href="">
+                                Login
+                            </Nav.Link>
                         )}
                     </Nav>
                 </Navbar.Collapse>
