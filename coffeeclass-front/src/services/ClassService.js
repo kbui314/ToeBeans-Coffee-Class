@@ -5,11 +5,18 @@ const API_URL = "http://localhost:8080/classes";
 class ClassService {
     getClassList() {
         return axios.get(`${API_URL}`);
-        // return axios.get(`${API_URL}`, {
-        //     headers: {
-        //         authorization: "bearer" + localstorage.getitem("access_token"),
-        //     },
-        // });
+    }
+
+    getClass(courseId) {
+        return axios.get(`${API_URL}/${courseId.id}`);
+    }
+
+    postRegistration(courseId) {
+        return axios.post(`${API_URL}/register/${courseId}`);
+    }
+
+    getUserClasses() {
+        return axios.get(`${API_URL}/user`);
     }
 }
 
