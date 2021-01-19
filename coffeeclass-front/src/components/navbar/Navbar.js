@@ -7,6 +7,10 @@ export default function NavBar() {
     const [isLogin, setIsLogin] = useState(false);
     const history = useHistory();
 
+    function goToHome() {
+        history.push("/");
+    }
+
     function logout() {
         localStorage.clear();
         history.push("/login");
@@ -25,7 +29,9 @@ export default function NavBar() {
     return (
         <Container>
             <Navbar collapseOnSelect expand="lg" bd="light" variant="light">
-                <Navbar.Brand href="#home">ToeBeans</Navbar.Brand>
+                <Navbar.Brand id="brand" onClick={() => goToHome()} href="">
+                    ToeBeans
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="response-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
@@ -35,11 +41,11 @@ export default function NavBar() {
                     <Nav className="ml-auto">
                         {isLogin ? (
                             <Nav.Link onClick={() => logout()} href="">
-                                Logout
+                                Log Out
                             </Nav.Link>
                         ) : (
                             <Nav.Link onClick={() => login()} href="">
-                                Login
+                                Log In
                             </Nav.Link>
                         )}
                     </Nav>

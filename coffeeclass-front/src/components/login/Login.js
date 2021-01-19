@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import NavBar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 import "./Login.css";
 import UserService from "../../services/UserService";
-import NavBar from "../navbar/Navbar";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -28,7 +29,9 @@ export default function Login() {
 
     return (
         <div>
-            <NavBar />
+            <div>
+                <NavBar />
+            </div>
             <div className="loginTitle">
                 <h1>Login</h1>
             </div>
@@ -62,6 +65,7 @@ export default function Login() {
                     <p>Not a user? Please {register}</p>
                 </Form>
             </div>
+            <Footer />
         </div>
     );
 }

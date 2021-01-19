@@ -3,6 +3,7 @@ import { Route, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import LocalStorageService from "./services/LocalStorageService";
+import Landing from "./components/landing/Landing";
 import Login from "./components/login/Login";
 import SignUp from "./components/signup/Signup";
 import ClassList from "./components/classlist/ClassList";
@@ -29,13 +30,15 @@ export default function App() {
             return response;
         },
         (error) => {
+            console.log(error.status);
             history.push("/login");
             Promise.reject(error);
         }
     );
     return (
         <div>
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Landing} />
+            <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/classes" component={ClassList} />
             <Route path="/class/:id" component={Class} />
