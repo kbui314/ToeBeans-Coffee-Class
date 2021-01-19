@@ -30,7 +30,6 @@ export default function App() {
             return response;
         },
         (error) => {
-            console.log(error.status);
             history.push("/login");
             Promise.reject(error);
         }
