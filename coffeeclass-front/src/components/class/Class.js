@@ -3,6 +3,7 @@ import { Button, Container } from "react-bootstrap";
 import { useParams, useHistory } from "react-router";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 import "./Class.css";
 
 export default function Class() {
@@ -36,18 +37,21 @@ export default function Class() {
     });
 
     return (
-        <Container>
+        <div>
             <NavBar />
-            <h1>Course Details</h1>
-            <h2>{courses.courseId}</h2>
-            <h4>{courses.description}</h4>
-            <Button
-                onClick={() => {
-                    registerForClass(courses.courseId);
-                }}
-            >
-                Register
-            </Button>
-        </Container>
+            <Container>
+                <h1>Course Details</h1>
+                <h2>{courses.courseId}</h2>
+                <h4>{courses.description}</h4>
+                <Button
+                    onClick={() => {
+                        registerForClass(courses.courseId);
+                    }}
+                >
+                    Register
+                </Button>
+            </Container>
+            <Footer />
+        </div>
     );
 }

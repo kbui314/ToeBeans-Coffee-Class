@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 import "./ClassList.css";
 
 export default function ClassList() {
@@ -88,6 +89,7 @@ export default function ClassList() {
                     </tbody>
                 </table>
             </div>
+            <Footer />
         </div>
     );
 }
