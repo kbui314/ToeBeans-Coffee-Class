@@ -16,3 +16,10 @@
     background-position: center;
     background-attachment: fixed;
 }
+
+img {
+    height: 150px;
+    width: 150px;
+    display: block;
+    margin: auto;
+}

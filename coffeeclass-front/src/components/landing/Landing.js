@@ -1,6 +1,9 @@
 import React from "react";
 import NavBar from "../navbar/Navbar";
 import { Container, Row, Col } from "react-bootstrap";
+import seasonalLogo from "../../images/seasonal.png";
+import organicLogo from "../../images/organic.png";
+import fairTradeLogo from "../../images/fairtrade.png";
 import "./Landing.css";
 import Footer from "../footer/Footer";
 
@@ -16,9 +19,18 @@ export default function Landing() {
             </Container>
             <Container className="section">
                 <Row>
-                    <Col>1 of 3</Col>
-                    <Col>2 of 3</Col>
-                    <Col>3 of 3</Col>
+                    <Col className="col-center">
+                        <img src={seasonalLogo} alt="Seasonal" />
+                        <p>This is the seasonal statement</p>
+                    </Col>
+                    <Col className="col-center">
+                        <img src={organicLogo} alt="Organic" />
+                        <p>This is the organic statement</p>
+                    </Col>
+                    <Col className="col-center">
+                        <img src={fairTradeLogo} alt="Fair Trade" />
+                        <p>This is the fair trade statement</p>
+                    </Col>
                 </Row>
             </Container>
             <Footer />
