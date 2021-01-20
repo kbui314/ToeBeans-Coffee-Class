@@ -11,6 +11,10 @@ export default function NavBar() {
         history.push("/");
     }
 
+    function goToCourses() {
+        history.push("/classes");
+    }
+
     function logout() {
         localStorage.clear();
         history.push("/login");
@@ -36,7 +40,9 @@ export default function NavBar() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="#contact">Contact</Nav.Link>
-                        <Nav.Link href="#course">Course</Nav.Link>
+                        <Nav.Link onClick={() => goToCourses()} href="">
+                            Course
+                        </Nav.Link>
                     </Nav>
                     <Nav className="ml-auto">
                         {isLogin ? (
