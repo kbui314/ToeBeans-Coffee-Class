@@ -1,5 +1,45 @@
 .section {
     min-height: 50vh;
+    padding: 20px;
+}
+
+#coffee-beans {
+    background: url("../../images/coffee-beans.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.section:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#statement p {
+    padding: 5% 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.blur {
+    background: rgb(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.blur h2 {
+    color: white;
+    border: 2px solid white;
+    padding: 5% 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 #big-text {

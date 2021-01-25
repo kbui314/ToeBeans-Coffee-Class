@@ -15,8 +15,21 @@ export default function Landing() {
                 <h2 id="big-text">Welcome</h2>
             </div>
             <Container className="section">
-                <div id="statement"></div>
+                <div id="statement">
+                    <p>
+                        Toe Beans is founded by a group of like-minded
+                        individuals who knew that good coffee does not have to
+                        come at the expense of compromised ethical standards. We
+                        strive to provide the best conditions for our farmers
+                        which results in providing the best coffee for you.
+                    </p>
+                </div>
             </Container>
+            <div id="coffee-beans">
+                <div className="blur center">
+                    <h2>Our Story</h2>
+                </div>
+            </div>
             <Container className="section">
                 <Row>
                     <Col className="col-center">
