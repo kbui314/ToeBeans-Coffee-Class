@@ -75,6 +75,7 @@ export default function ClassList() {
                         <tr>
                             <th>Id</th>
                             <th>Class Title</th>
+                            <th>Time</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,6 +84,7 @@ export default function ClassList() {
                                 <tr key={e.courseId} className="course">
                                     <td>{e.courseId}</td>
                                     <td>{e.title}</td>
+                                    <td>{e.timeperiod}</td>
                                 </tr>
                             );
                         })}

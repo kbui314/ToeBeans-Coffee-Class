@@ -1,0 +1,37 @@
+#coffee-background {
+    /* background: url("../../images/two-coffee.jpg"); */
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* min-height: 100vh; */
+}
+
+.header-section {
+    background-color: lightblue;
+    color: white;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-section div h1 {
+    font-size: 5vw;
+}
+
+#contact-title {
+    font-size: 50px;
+    text-align: center;
+}
+
+#two-col-row .col-center {
+    text-align: center;
+}
+
+.loc-add div p {
+    margin: 0;
+    padding: 0;
+}
+
+#submit-button {
+    margin-top: 10px;
+}

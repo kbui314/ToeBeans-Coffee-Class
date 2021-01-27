@@ -29,18 +29,17 @@ export default function Login() {
 
     return (
         <div>
-            <div>
+            <div id="header-back-section">
                 <NavBar />
             </div>
             <div className="loginTitle">
-                <h1>Login</h1>
+                <h1>Log In</h1>
             </div>
             <div className="Login">
                 <Form onSubmit={handleSubmit}>
                     <Form.Group size="lg" controlId="email">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
-                            autoFocus
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -62,7 +61,9 @@ export default function Login() {
                     >
                         Login
                     </Button>
-                    <p>Not a user? Please {register}</p>
+                    <p className="register-center">
+                        Not a user? Please {register}
+                    </p>
                 </Form>
             </div>
             <Footer />

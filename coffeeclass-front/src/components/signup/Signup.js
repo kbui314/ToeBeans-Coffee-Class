@@ -98,7 +98,7 @@ export default function SignUp() {
                     >
                         Sign Up
                     </Button>
-                    <p>Already a user? Please {link}</p>
+                    <p className="text-center">Already a user? Please {link}</p>
                 </Form>
             </div>
             <Footer />

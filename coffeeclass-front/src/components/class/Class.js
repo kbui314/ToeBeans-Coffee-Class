@@ -43,6 +43,7 @@ export default function Class() {
                 <h1>Course Details</h1>
                 <h2>{courses.courseId}</h2>
                 <h4>{courses.description}</h4>
+                <h4>{courses.timeperiod}</h4>
                 <Button
                     onClick={() => {
                         registerForClass(courses.courseId);

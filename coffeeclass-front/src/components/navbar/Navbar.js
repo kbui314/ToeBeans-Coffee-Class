@@ -15,6 +15,10 @@ export default function NavBar() {
         history.push("/classes");
     }
 
+    function goToContact() {
+        history.push("/contact");
+    }
+
     function logout() {
         localStorage.clear();
         history.push("/login");
@@ -39,7 +43,9 @@ export default function NavBar() {
                 <Navbar.Toggle aria-controls="response-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#contact">Contact</Nav.Link>
+                        <Nav.Link onClick={() => goToContact()} href="">
+                            Contact
+                        </Nav.Link>
                         <Nav.Link onClick={() => goToCourses()} href="">
                             Course
                         </Nav.Link>

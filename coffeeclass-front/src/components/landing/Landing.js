@@ -34,15 +34,25 @@ export default function Landing() {
                 <Row>
                     <Col className="col-center">
                         <img src={seasonalLogo} alt="Seasonal" />
-                        <p>This is the seasonal statement</p>
+                        <p>
+                            Our coffee beans are picked at peak ripeness in
+                            order to provide the best flavor.
+                        </p>
                     </Col>
                     <Col className="col-center">
                         <img src={organicLogo} alt="Organic" />
-                        <p>This is the organic statement</p>
+                        <p>
+                            Coffee beans are grown without any pesticides and
+                            are NON-GMO.
+                        </p>
                     </Col>
                     <Col className="col-center">
                         <img src={fairTradeLogo} alt="Fair Trade" />
-                        <p>This is the fair trade statement</p>
+                        <p>
+                            We are Fair Trade certified meaning improved
+                            relationships with the farmers which in turn
+                            produces better coffee.
+                        </p>
                     </Col>
                 </Row>
             </Container>

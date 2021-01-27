@@ -20,16 +20,20 @@ public class Course {
 	
 	@Column(name="description")
 	private String description;
+	
+	@Column(name="timeperiod")
+	private String timeperiod;
 
 	public Course() {
 		super();
 	}
 
-	public Course(int courseid, String title, String description) {
+	public Course(int courseid, String title, String description, String timeperiod) {
 		super();
 		this.courseid = courseid;
 		this.title = title;
 		this.description = description;
+		this.timeperiod = timeperiod;
 	}
 
 	public int getCourseId() {
@@ -54,6 +58,13 @@ public class Course {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getTimeperiod() {
+		return timeperiod;
+	}
+	public void setTimeperiod(String timeperiod) {
+		this.timeperiod = timeperiod;
 	}
 	
 	

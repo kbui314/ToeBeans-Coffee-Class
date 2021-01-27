@@ -8,6 +8,7 @@ import Login from "./components/login/Login";
 import SignUp from "./components/signup/Signup";
 import ClassList from "./components/classlist/ClassList";
 import Class from "./components/class/Class";
+import Contact from "./components/contact/Contact";
 
 export default function App() {
     const history = useHistory();
@@ -37,6 +38,7 @@ export default function App() {
     return (
         <div>
             <Route exact path="/" component={Landing} />
+            <Route path="/contact" component={Contact} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/classes" component={ClassList} />

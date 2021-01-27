@@ -1,6 +1,9 @@
 .section {
     min-height: 50vh;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #coffee-beans {
@@ -10,11 +13,8 @@
     background-attachment: fixed;
 }
 
-.section:first-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+#three-col-logo .col-center {
+    margin: 50px;
 }
 
 #statement p {
