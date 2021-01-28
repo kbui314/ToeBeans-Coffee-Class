@@ -2,3 +2,7 @@
     cursor: pointer;
     background-color: lightgrey;
 }
+
+.course-title {
+    width: 50%;
+}

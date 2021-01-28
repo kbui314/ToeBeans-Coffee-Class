@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { Container, ListGroup } from "react-bootstrap";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import "./ClassList.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 export default function ClassList() {
     const history = useHistory();
     const [classList, setClassList] = useState([]);
     const [userClassList, setUserClassList] = useState([]);
+    const listClass = ["my-2", "class-list"];
 
     function refreshClass() {
         ClassService.getClassList().then((response) => {
@@ -42,55 +45,53 @@ export default function ClassList() {
 
     return (
         <div>
-            <NavBar />
-            <div className="container">
-                <h1>Class List</h1>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Class Title</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {classList.map((e) => {
-                            return (
-                                <tr
-                                    key={e.courseId}
-                                    onClick={() => viewCourse(e.courseId)}
-                                    className="course"
-                                >
-                                    <td>{e.courseId}</td>
-                                    <td>{e.title}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+            <div>
+                <NavBar />
             </div>
-            <div className="container">
-                <h2>Upcoming Classes</h2>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Class Title</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {userClassList.map((e) => {
-                            return (
-                                <tr key={e.courseId} className="course">
-                                    <td>{e.courseId}</td>
-                                    <td>{e.title}</td>
-                                    <td>{e.timeperiod}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
-            </div>
+            <Container>
+                <div>
+                    <h2>Class List</h2>
+                    {classList.map((e) => {
+                        return (
+                            <ListGroup
+                                horizontal="sm"
+                                className={listClass}
+                                key={e.courseId}
+                                onClick={() => viewCourse(e.courseId)}
+                            >
+                                <ListGroup.Item variant="info">
+                                    {e.courseId}
+                                </ListGroup.Item>
+                                <ListGroup.Item action className="course-title">
+                                    {e.title}
+                                </ListGroup.Item>
+                            </ListGroup>
+                        );
+                    })}
+                </div>
+            </Container>
+            <Container>
+                <div>
+                    <h2>Upcoming Classes</h2>
+                    {userClassList.map((e) => {
+                        return (
+                            <ListGroup
+                                horizontal="sm"
+                                className="my-2"
+                                key={e.courseId}
+                            >
+                                <ListGroup.Item variant="danger">
+                                    {e.courseId}
+                                </ListGroup.Item>
+                                <ListGroup.Item className="course-title">
+                                    {e.title}
+                                </ListGroup.Item>
+                                <ListGroup.Item>{e.timeperiod}</ListGroup.Item>
+                            </ListGroup>
+                        );
+                    })}
+                </div>
+            </Container>
             <Footer />
         </div>
     );
