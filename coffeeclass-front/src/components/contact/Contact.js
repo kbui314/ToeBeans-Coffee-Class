@@ -3,6 +3,7 @@ import { Container, Col, Row, Button } from "react-bootstrap";
 import NavBar from "../navbar/Navbar";
 import Form from "react-bootstrap/Form";
 import Footer from "../footer/Footer";
+import UserService from "../../services/UserService";
 import "./Contact.css";
 
 export default function Contact() {
@@ -14,13 +15,37 @@ export default function Contact() {
     function validateForm() {
         return (
             firstName.length > 0 &&
-            lastName > 0 &&
+            lastName.length > 0 &&
             email.length > 0 &&
             description.length > 0
         );
     }
 
-    function handleSubmit() {}
+    function handleSubmit(event) {
+        event.preventDefault();
+        let contact = {
+            formId: -1,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            description: description,
+        };
+        UserService.sendContact(contact).then((response) => {
+            if (response.data.formId === 0) {
+                alert("Sending contact has failed");
+            } else {
+                alert("Successful");
+                clearInput();
+            }
+        });
+    }
+
+    function clearInput() {
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setDescription("");
+    }
 
     return (
         <div>
@@ -48,7 +73,7 @@ export default function Contact() {
                             </div>
                         </Col>
                     </Row>
-                    <div classname="form">
+                    <div className="form">
                         <Form onSubmit={handleSubmit}>
                             <Form.Group size="lg" controlId="email">
                                 <Form.Label>First Name</Form.Label>
@@ -82,16 +107,16 @@ export default function Contact() {
                                         setDescription(e.target.value)
                                     }
                                 ></Form.Control>
-                                <Button
-                                    id="submit-button"
-                                    block
-                                    size="lg"
-                                    type="submit"
-                                    disabled={!validateForm()}
-                                >
-                                    Submit
-                                </Button>
                             </Form.Group>
+                            <Button
+                                id="submit-button"
+                                block
+                                size="lg"
+                                type="submit"
+                                disabled={!validateForm()}
+                            >
+                                Submit
+                            </Button>
                         </Form>
                     </div>
                 </div>

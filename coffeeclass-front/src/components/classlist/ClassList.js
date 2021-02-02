@@ -16,6 +16,9 @@ export default function ClassList() {
     function refreshClass() {
         ClassService.getClassList().then((response) => {
             if (response !== undefined) {
+                response.data.sort(function (a, b) {
+                    return a.courseId - b.courseId;
+                });
                 setClassList(response.data);
             }
         });
@@ -28,9 +31,16 @@ export default function ClassList() {
     function refreshUserClass() {
         ClassService.getUserClasses().then((response) => {
             if (response !== undefined) {
+                response.data.sort(function (a, b) {
+                    return a.courseId - b.courseId;
+                });
                 setUserClassList(response.data);
             }
         });
+    }
+
+    function goToContact() {
+        history.push("/contact");
     }
 
     useEffect(() => {
@@ -92,6 +102,19 @@ export default function ClassList() {
                     })}
                 </div>
             </Container>
+            <div className="coffeebean">
+                <div className="blur center">
+                    <h3>
+                        Have Questions?
+                        <div
+                            className="contact-title"
+                            onClick={() => goToContact()}
+                        >
+                            Go to our Contact page.
+                        </div>
+                    </h3>
+                </div>
+            </div>
             <Footer />
         </div>
     );

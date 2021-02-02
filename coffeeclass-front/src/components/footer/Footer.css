@@ -1,7 +1,6 @@
 .footer-bg {
     background-color: lightgrey;
     padding: 20px;
-    /* margin-top: 50vh; */
 }
 
 ul {
@@ -16,6 +15,6 @@ li {
 }
 
 li img {
-    height: 75px;
-    width: 75px;
+    height: 50px;
+    width: 50px;
 }

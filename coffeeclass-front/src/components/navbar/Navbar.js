@@ -12,7 +12,11 @@ export default function NavBar() {
     }
 
     function goToCourses() {
-        history.push("/classes");
+        if (localStorage.getItem("access_token")) {
+            history.push("/classes");
+        } else {
+            history.push("/login");
+        }
     }
 
     function goToContact() {

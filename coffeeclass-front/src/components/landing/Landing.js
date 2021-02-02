@@ -34,6 +34,7 @@ export default function Landing() {
                 <Row>
                     <Col className="col-center">
                         <img src={seasonalLogo} alt="Seasonal" />
+                        <h3 className="center-title">Seasonal</h3>
                         <p>
                             Our coffee beans are picked at peak ripeness in
                             order to provide the best flavor.
@@ -41,6 +42,7 @@ export default function Landing() {
                     </Col>
                     <Col className="col-center">
                         <img src={organicLogo} alt="Organic" />
+                        <h3 className="center-title">Organic</h3>
                         <p>
                             Coffee beans are grown without any pesticides and
                             are NON-GMO.
@@ -48,6 +50,7 @@ export default function Landing() {
                     </Col>
                     <Col className="col-center">
                         <img src={fairTradeLogo} alt="Fair Trade" />
+                        <h3 className="center-title">Fair Trade</h3>
                         <p>
                             We are Fair Trade certified meaning improved
                             relationships with the farmers which in turn
