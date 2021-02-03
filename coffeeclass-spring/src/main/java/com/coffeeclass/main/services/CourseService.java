@@ -40,6 +40,11 @@ public class CourseService {
 		try {
 			User user = userService.getUser(username);
 			Course course = getCourse(courseId);
+			if(user.getCourses().contains(course)) {
+				return "registered";
+			}else {
+				user.addCourse(course);
+			}
 			user.addCourse(course);
 			userService.saveUser(user);
 			return "success";

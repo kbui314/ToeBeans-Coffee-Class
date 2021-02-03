@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Modal } from "react-bootstrap";
 import { useParams, useHistory } from "react-router";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
@@ -10,6 +10,12 @@ export default function Class() {
     const history = useHistory();
     const id = useParams();
     const [courses, setCourse] = useState({});
+    const [message, setMessage] = useState("");
+    const [showModal, setShowModal] = useState(false);
+
+    function showMessagePopup() {
+        setShowModal(true);
+    }
 
     function getClass() {
         ClassService.getClass(id).then((response) => {
@@ -22,7 +28,14 @@ export default function Class() {
     function registerForClass(id) {
         ClassService.postRegistration(id).then((response) => {
             if (response !== undefined) {
-                history.push("/classes");
+                if (response.data === "registered") {
+                    const message =
+                        "You have already registered for this class";
+                    setMessage(message);
+                    showMessagePopup();
+                } else {
+                    history.push("/classes");
+                }
             }
         });
     }
@@ -53,6 +66,14 @@ export default function Class() {
                 </Button>
             </Container>
             <Footer />
+
+            <Modal size="lg" centered show={showModal}>
+                <Modal.Header>Message</Modal.Header>
+                <Modal.Body>{message}</Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={() => setShowModal(false)}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }
