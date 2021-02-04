@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Container, ListGroup } from "react-bootstrap";
+import { Button, Container, Modal, ListGroup } from "react-bootstrap";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
@@ -12,6 +12,8 @@ export default function ClassList() {
     const [classList, setClassList] = useState([]);
     const [userClassList, setUserClassList] = useState([]);
     const listClass = ["my-2", "class-list"];
+    const [message, setMessage] = useState("");
+    const [showModal, setShowModal] = useState(false);
 
     function refreshClass() {
         ClassService.getClassList().then((response) => {
@@ -51,13 +53,15 @@ export default function ClassList() {
                     for (let i = 0; i < list.length; i++) {
                         if (list[i].courseId === courseId) {
                             list.splice(i, 1);
-                            refreshUserClass();
+                            setMessage("Delete Success");
+                            setShowModal(true);
+                            setUserClassList(list);
                             break;
                         }
                     }
-                    alert("Delete Success");
                 } else {
-                    alert("Delete Failed");
+                    setMessage("Delete Failed");
+                    setShowModal(true);
                 }
             }
         });
@@ -71,7 +75,7 @@ export default function ClassList() {
             refreshClass();
             refreshUserClass();
         }
-    }, [history]);
+    }, [history, userClassList]);
 
     return (
         <div>
@@ -146,6 +150,13 @@ export default function ClassList() {
                 </div>
             </div>
             <Footer />
+            <Modal size="lg" centered show={showModal}>
+                <Modal.Header>Message</Modal.Header>
+                <Modal.Body>{message}</Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={() => setShowModal(false)}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }
