@@ -18,6 +18,10 @@ class ClassService {
     getUserClasses() {
         return axios.get(`${API_URL}/user`);
     }
+
+    deleteUserCourse(courseId) {
+        return axios.post(`${API_URL}/delete/${courseId}`);
+    }
 }
 
 export default new ClassService();

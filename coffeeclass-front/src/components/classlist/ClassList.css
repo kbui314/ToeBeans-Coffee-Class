@@ -10,6 +10,7 @@
 .contact-title:hover {
     color: lightblue;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .contact-section {

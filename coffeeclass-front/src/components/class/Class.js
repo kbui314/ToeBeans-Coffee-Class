@@ -40,6 +40,11 @@ export default function Class() {
         });
     }
 
+    function modalConfirm() {
+        setShowModal(false);
+        history.push("/classes");
+    }
+
     useEffect(() => {
         const token = localStorage.getItem("access_token");
         if (token == null) {
@@ -51,19 +56,27 @@ export default function Class() {
 
     return (
         <div>
-            <NavBar />
-            <Container>
+            <div className="coffee-background">
+                <NavBar />
+                <div className="blur-title">
+                    <h1 className="class-title">{courses.title}</h1>
+                </div>
+            </div>
+            <Container className="details-container">
                 <h1>Course Details</h1>
-                <h2>{courses.courseId}</h2>
-                <h4>{courses.description}</h4>
+                <p>{courses.description}</p>
+                <h2>Time Period:</h2>
                 <h4>{courses.timeperiod}</h4>
-                <Button
-                    onClick={() => {
-                        registerForClass(courses.courseId);
-                    }}
-                >
-                    Register
-                </Button>
+                <div className="button-center">
+                    <Button
+                        onClick={() => {
+                            registerForClass(courses.courseId);
+                        }}
+                        className="register-button"
+                    >
+                        Register
+                    </Button>
+                </div>
             </Container>
             <Footer />
 
@@ -71,7 +84,7 @@ export default function Class() {
                 <Modal.Header>Message</Modal.Header>
                 <Modal.Body>{message}</Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => setShowModal(false)}>Close</Button>
+                    <Button onClick={() => modalConfirm()}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </div>

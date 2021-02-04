@@ -53,6 +53,24 @@ public class CourseService {
 		}
 	}
 	
+	public String deleteUserCourse(int courseId, String username) {
+		try {
+			User user = userService.getUser(username);
+			Course course = getCourse(courseId);
+			if(!user.getCourses().contains(course)) {
+				return "Course not found.";
+			}else {
+				Set<Course> courses = user.getCourses();
+				courses.remove(course);
+				user.setCourses(courses);
+				userService.saveUser(user);
+				return "Success";
+			}
+		}catch(Exception e) {
+			return "Delete failed.";
+		}
+	}
+	
 	public Set<Course> getUserCourseList(String username){
 		try {
 			User user = userService.getUser(username);
