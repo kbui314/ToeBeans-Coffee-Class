@@ -68,7 +68,7 @@ export default function ClassList() {
     }
 
     useEffect(() => {
-        const token = localStorage.getItem("access_token");
+        const token = sessionStorage.getItem("access_token");
         if (token == null) {
             history.push("/login");
         } else {

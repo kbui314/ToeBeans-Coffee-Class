@@ -12,7 +12,7 @@ export default function NavBar() {
     }
 
     function goToCourses() {
-        if (localStorage.getItem("access_token")) {
+        if (sessionStorage.getItem("access_token")) {
             history.push("/classes");
         } else {
             history.push("/login");
@@ -24,7 +24,7 @@ export default function NavBar() {
     }
 
     function logout() {
-        localStorage.clear();
+        sessionStorage.clear();
         history.push("/login");
     }
 
@@ -33,7 +33,7 @@ export default function NavBar() {
     }
 
     useEffect(() => {
-        if (localStorage.getItem("access_token")) {
+        if (sessionStorage.getItem("access_token")) {
             setIsLogin(true);
         }
     }, []);

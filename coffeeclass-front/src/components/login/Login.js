@@ -21,7 +21,7 @@ export default function Login() {
         event.preventDefault();
         UserService.loginUser(email, password).then((response) => {
             if (response !== undefined) {
-                localStorage.setItem("access_token", response.data);
+                sessionStorage.setItem("access_token", response.data);
                 history.push("/classes");
             }
         });
