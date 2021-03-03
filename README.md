@@ -1,13 +1,13 @@
 # ToeBeans Coffee Class
 ToeBeans is full-stack application where users can sign up, login, and sign
 up for coffee classes and learn the business of starting up your own coffee business,
-whether it be running a cafe, selling your own coffee beans, etc.
+
 
 ## Techologies:
 React, Spring Boot, Spring Security, Java, PostgreSQL, and Docker
 
 
-###Features
+### Features
 * A user can register for an account.
 * A user can login to the view current Coffee classess.
 * A user view all of their registered classes.
@@ -34,4 +34,4 @@ Note: You might have to use sudo if you are using Linux-based OS if you did not 
 permission for the docker-compose command.
 
 Once the above command ran successfully, you are now able to run Spring Boot back-end.
-
+Run Spring Boot in Eclipse of your preferred editor.
