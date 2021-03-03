@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.coffeeclass.main.models.ContactForm;
 import com.coffeeclass.main.models.User;
+import com.coffeeclass.main.repository.ContactRepository;
 import com.coffeeclass.main.repository.UserRepository;
 
 @Service
@@ -15,6 +17,9 @@ public class UserService {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	ContactRepository contactRepository;
 	
 //	public String createNewUser(User user) {
 //		try {
@@ -42,6 +47,15 @@ public class UserService {
 	
 	public void saveUser(User user) {
 		userRepository.save(user);
+	}
+	
+	public ContactForm createContactForm(ContactForm contactForm) {
+		try {
+			contactRepository.save(contactForm);
+			return contactForm;
+		}catch(Exception e) {
+			return new ContactForm(0,"","","","");
+		}
 	}
 	
 }

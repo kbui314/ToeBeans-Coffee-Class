@@ -34,6 +34,11 @@ public class CourseController {
 		return courseService.registration(id, authentication.getName());
 	}
 	
+	@PostMapping("/classes/delete/{id}")
+	public String deleteUserCourse(@PathVariable int id, Authentication authentication) {
+		return courseService.deleteUserCourse(id, authentication.getName());
+	}
+	
 	@GetMapping("/classes/user")
 	public Set<Course> getUserCourse(Authentication authentication){
 		return courseService.getUserCourseList(authentication.getName());

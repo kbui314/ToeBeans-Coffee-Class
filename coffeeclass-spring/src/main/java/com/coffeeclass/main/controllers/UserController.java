@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coffeeclass.main.models.ContactForm;
 import com.coffeeclass.main.models.User;
 import com.coffeeclass.main.services.UserService;
 
@@ -25,6 +26,11 @@ public class UserController {
 	@PostMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		return null;
+	}
+	
+	@PostMapping("/sendform")
+	public ContactForm sendForm(@RequestBody ContactForm contactForm) {
+		return userService.createContactForm(contactForm);
 	}
 	
 //	@PostMapping("/users")

@@ -40,11 +40,34 @@ public class CourseService {
 		try {
 			User user = userService.getUser(username);
 			Course course = getCourse(courseId);
+			if(user.getCourses().contains(course)) {
+				return "registered";
+			}else {
+				user.addCourse(course);
+			}
 			user.addCourse(course);
 			userService.saveUser(user);
 			return "success";
 		}catch(Exception e) {
 			return "failed";
+		}
+	}
+	
+	public String deleteUserCourse(int courseId, String username) {
+		try {
+			User user = userService.getUser(username);
+			Course course = getCourse(courseId);
+			if(!user.getCourses().contains(course)) {
+				return "Course not found.";
+			}else {
+				Set<Course> courses = user.getCourses();
+				courses.remove(course);
+				user.setCourses(courses);
+				userService.saveUser(user);
+				return "Success";
+			}
+		}catch(Exception e) {
+			return "Delete failed.";
 		}
 	}
 	

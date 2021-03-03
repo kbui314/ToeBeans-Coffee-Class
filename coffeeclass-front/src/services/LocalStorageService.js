@@ -10,15 +10,15 @@ const LocalStorageService = () => {
     }
 
     function _setToken(token) {
-        localStorage.setItem("access_token", token.access_token);
+        sessionStorage.setItem("access_token", token.access_token);
     }
 
     function _getToken() {
-        return localStorage.getItem("access_token");
+        return sessionStorage.getItem("access_token");
     }
 
     function _clearToken() {
-        localStorage.removeItem("access_token");
+        sessionStorage.removeItem("access_token");
     }
 
     return {

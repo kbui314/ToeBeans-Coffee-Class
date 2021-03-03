@@ -2,3 +2,48 @@
     cursor: pointer;
     background-color: lightgrey;
 }
+
+.course-title {
+    width: 50%;
+}
+
+.contact-title:hover {
+    color: lightblue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.contact-section {
+    text-align: center;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: gray;
+}
+
+.coffeebean {
+    background: url("../../images/coffee-beans.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.blur {
+    background: rgb(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.blur h3 {
+    color: white;
+    border: 2px solid white;
+    padding: 5% 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

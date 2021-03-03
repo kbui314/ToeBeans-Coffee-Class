@@ -1,0 +1,69 @@
+.section {
+    min-height: 50vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#coffee-beans {
+    background: url("../../images/coffee-beans.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#three-col-logo .col-center {
+    margin: 50px;
+}
+
+#statement p {
+    padding: 5% 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.blur {
+    background: rgb(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.blur h2 {
+    color: white;
+    border: 2px solid white;
+    padding: 5% 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#big-text {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-60%, -35%);
+}
+
+#landing {
+    background: url("../../images/coffee-sunrise.jpg");
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+img {
+    height: 150px;
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+
+.center-title {
+    text-align: center;
+}

@@ -1,0 +1,20 @@
+.footer-bg {
+    background-color: lightgrey;
+    padding: 20px;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    transform: translateX(-1%);
+}
+
+li {
+    padding: 5px;
+    list-style: none;
+}
+
+li img {
+    height: 50px;
+    width: 50px;
+}

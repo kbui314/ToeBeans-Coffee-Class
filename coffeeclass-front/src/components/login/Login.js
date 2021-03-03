@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import NavBar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 import "./Login.css";
 import UserService from "../../services/UserService";
-import NavBar from "../navbar/Navbar";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ export default function Login() {
         event.preventDefault();
         UserService.loginUser(email, password).then((response) => {
             if (response !== undefined) {
-                localStorage.setItem("access_token", response.data);
+                sessionStorage.setItem("access_token", response.data);
                 history.push("/classes");
             }
         });
@@ -28,16 +29,17 @@ export default function Login() {
 
     return (
         <div>
-            <NavBar />
+            <div id="header-back-section">
+                <NavBar />
+            </div>
             <div className="loginTitle">
-                <h1>Login</h1>
+                <h1>Log In</h1>
             </div>
             <div className="Login">
                 <Form onSubmit={handleSubmit}>
                     <Form.Group size="lg" controlId="email">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
-                            autoFocus
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -59,9 +61,12 @@ export default function Login() {
                     >
                         Login
                     </Button>
-                    <p>Not a user? Please {register}</p>
+                    <p className="register-center">
+                        Not a user? Please {register}
+                    </p>
                 </Form>
             </div>
+            <Footer />
         </div>
     );
 }
