@@ -3,7 +3,7 @@ import { Button, Container, Modal } from "react-bootstrap";
 import { useParams, useHistory } from "react-router";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
+import MessageModal from "../messagemodal/MessageModal";
 import "./Class.css";
 
 export default function Class() {
@@ -26,16 +26,16 @@ export default function Class() {
     }
 
     function registerForClass(id) {
+        let message = "";
         ClassService.postRegistration(id).then((response) => {
             if (response !== undefined) {
                 if (response.data === "registered") {
-                    const message =
-                        "You have already registered for this class";
-                    setMessage(message);
-                    showMessagePopup();
+                    message = "You have already registered for this class";
                 } else {
-                    history.push("/classes");
+                    message = "Registration Successful";
                 }
+                setMessage(message);
+                showMessagePopup();
             }
         });
     }
@@ -78,15 +78,12 @@ export default function Class() {
                     </Button>
                 </div>
             </Container>
-            <Footer />
 
-            <Modal size="lg" centered show={showModal}>
-                <Modal.Header>Message</Modal.Header>
-                <Modal.Body>{message}</Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={() => modalConfirm()}>Close</Button>
-                </Modal.Footer>
-            </Modal>
+            <MessageModal
+                showModal={showModal}
+                message={message}
+                onClick={() => modalConfirm()}
+            />
         </div>
     );
 }

@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavBar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
 import "./Login.css";
 import UserService from "../../services/UserService";
 
@@ -66,7 +65,6 @@ export default function Login() {
                     </p>
                 </Form>
             </div>
-            <Footer />
         </div>
     );
 }

@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 import { Button, Container, Modal, ListGroup } from "react-bootstrap";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
 import "./ClassList.css";
 import "bootstrap/dist/css/bootstrap.css";
+import MessageModal from "../messagemodal/MessageModal";
 
 export default function ClassList() {
     const history = useHistory();
@@ -54,17 +54,21 @@ export default function ClassList() {
                         if (list[i].courseId === courseId) {
                             list.splice(i, 1);
                             setMessage("Delete Success");
-                            setShowModal(true);
-                            setUserClassList(list);
+                            // setUserClassList(list);
                             break;
                         }
                     }
                 } else {
                     setMessage("Delete Failed");
-                    setShowModal(true);
                 }
+                setShowModal(true);
             }
         });
+        setShowModal(true);
+    }
+
+    function modalConfirm() {
+        setShowModal(false);
     }
 
     useEffect(() => {
@@ -75,7 +79,7 @@ export default function ClassList() {
             refreshClass();
             refreshUserClass();
         }
-    }, [history, userClassList]);
+    }, [history]);
 
     return (
         <div>
@@ -149,14 +153,11 @@ export default function ClassList() {
                     </h3>
                 </div>
             </div>
-            <Footer />
-            <Modal size="lg" centered show={showModal}>
-                <Modal.Header>Message</Modal.Header>
-                <Modal.Body>{message}</Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={() => setShowModal(false)}>Close</Button>
-                </Modal.Footer>
-            </Modal>
+            <MessageModal
+                showModal={showModal}
+                message={message}
+                onClick={() => modalConfirm()}
+            />
         </div>
     );
 }

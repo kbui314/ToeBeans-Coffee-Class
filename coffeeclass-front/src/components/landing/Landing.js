@@ -5,7 +5,6 @@ import seasonalLogo from "../../images/seasonal.png";
 import organicLogo from "../../images/organic.png";
 import fairTradeLogo from "../../images/fairtrade.png";
 import "./Landing.css";
-import Footer from "../footer/Footer";
 
 export default function Landing() {
     return (
@@ -59,7 +58,6 @@ export default function Landing() {
                     </Col>
                 </Row>
             </Container>
-            <Footer />
         </div>
     );
 }
