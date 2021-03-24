@@ -15,7 +15,8 @@ create table users(
 	lastname text not null,
 	username text not null,
 	password text not null,
-	phone text not null
+	phone text not null,
+	usertype text
 );
 
 create table registration(

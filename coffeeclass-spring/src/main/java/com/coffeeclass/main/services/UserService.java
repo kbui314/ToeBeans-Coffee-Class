@@ -1,6 +1,7 @@
 package com.coffeeclass.main.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,7 @@ public class UserService {
 //	}
 	
 	public String createNewUser(User user) {
+		user.setUserType("NORMAL");
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		return String.valueOf(userRepository.save(new User(user)).getUserid());
 	}
