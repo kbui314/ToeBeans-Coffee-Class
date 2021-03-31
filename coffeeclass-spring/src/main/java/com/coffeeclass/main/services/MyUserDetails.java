@@ -23,6 +23,18 @@ public class MyUserDetails implements UserDetailsService{
 			throw new UsernameNotFoundException("User" + username + "not found");
 		}
 		
+		if(user.getUserType() == "ADMIN") {
+			return org.springframework.security.core.userdetails.User
+					.withUsername(username)
+					.password(user.getPassword())
+					.authorities("ADMIN")
+					.accountExpired(false)
+					.accountLocked(false)
+					.credentialsExpired(false)
+					.disabled(false)
+					.build();
+		}
+		
 		return org.springframework.security.core.userdetails.User
 		        .withUsername(username)
 		        .password(user.getPassword())

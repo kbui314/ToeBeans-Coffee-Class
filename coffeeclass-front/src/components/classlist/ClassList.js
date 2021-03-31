@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Container, Modal, ListGroup } from "react-bootstrap";
+import { Button, Container, ListGroup } from "react-bootstrap";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
 import "./ClassList.css";

@@ -43,4 +43,9 @@ public class CourseController {
 	public Set<Course> getUserCourse(Authentication authentication){
 		return courseService.getUserCourseList(authentication.getName());
 	}
+	
+//	@GetMapping("/dashboard/classes/{id}")
+//	public List<String> getCourseEnrollment(@PathVariable int id){
+//		return courseService.getEnrollment(id);
+//	}
 }

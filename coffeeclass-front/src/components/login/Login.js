@@ -16,12 +16,26 @@ export default function Login() {
         return email.length > 0 && password.length > 0;
     }
 
+    function checkUser() {
+        UserService.verifyUser().then((response) => {
+            if (response !== null) {
+                if (response.data.message === "Success") {
+                    history.push("/dashboard");
+                } else {
+                    history.push("/classes");
+                }
+            } else {
+                history.push("/classes");
+            }
+        });
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
         UserService.loginUser(email, password).then((response) => {
             if (response !== undefined) {
                 sessionStorage.setItem("access_token", response.data);
-                history.push("/classes");
+                checkUser();
             }
         });
     }

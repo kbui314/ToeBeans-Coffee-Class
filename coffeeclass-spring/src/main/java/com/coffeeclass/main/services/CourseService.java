@@ -1,5 +1,6 @@
 package com.coffeeclass.main.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,14 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.coffeeclass.main.models.Course;
+import com.coffeeclass.main.models.Registration;
 import com.coffeeclass.main.models.User;
 import com.coffeeclass.main.repository.CourseRepository;
+import com.coffeeclass.main.repository.RegistrationRepository;
 
 @Service
 public class CourseService {
 	
 	@Autowired
 	CourseRepository courseRepository;
+	
+	@Autowired
+	RegistrationRepository registrationRepository;
 	
 	@Autowired
 	UserService userService;
@@ -79,4 +85,10 @@ public class CourseService {
 			return new HashSet<Course>();
 		}
 	}
+	
+//	public List<String> getEnrollment(int courseid){
+//		try {
+//		}catch(Exception e) {
+//		}
+//	}
 }

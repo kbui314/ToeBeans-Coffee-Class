@@ -30,6 +30,10 @@ class UserService {
             description: contactForm.description,
         });
     }
+
+    verifyUser() {
+        return axios.get(`${API_URL}/verify`);
+    }
 }
 
 export default new UserService();

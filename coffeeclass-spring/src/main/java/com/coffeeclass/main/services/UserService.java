@@ -1,7 +1,9 @@
 package com.coffeeclass.main.services;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -60,4 +62,19 @@ public class UserService {
 		}
 	}
 	
+	public Map<String, String> verifyUser(String username) {
+		HashMap<String, String> map = new HashMap<>();
+		try {
+			User user = getUser(username);
+			if (user.getUserType().equals("ADMIN")) {
+				map.put("message","Success");
+				return map;
+			}
+			map.put("message", "Failed");
+			return map;
+		}catch(Exception e) {
+			map.put("message", "Failed");
+			return map;
+		}
+	}
 }

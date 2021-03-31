@@ -11,6 +11,7 @@ import Class from "./components/class/Class";
 import Contact from "./components/contact/Contact";
 // import NavBar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import Dashboard from "./components/dashboard/DashBoard";
 
 export default function App() {
     const history = useHistory();
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/signup" component={SignUp} />
             <Route path="/classes" component={ClassList} />
             <Route path="/class/:id" component={Class} />
+            <Route path="/dashboard" component={Dashboard} />
             <Footer />
         </div>
     );

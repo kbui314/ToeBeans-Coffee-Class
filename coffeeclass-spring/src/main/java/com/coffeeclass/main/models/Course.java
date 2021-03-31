@@ -1,10 +1,16 @@
 package com.coffeeclass.main.models;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +29,11 @@ public class Course {
 	
 	@Column(name="timeperiod")
 	private String timeperiod;
+	
+//	@Column(name="enrollment")
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	@JoinTable(name = "registration", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+//	private Set<User> enrollment;
 
 	public Course() {
 		super();
@@ -66,6 +77,13 @@ public class Course {
 	public void setTimeperiod(String timeperiod) {
 		this.timeperiod = timeperiod;
 	}
-	
+
+//	public Set<User> getEnrollment() {
+//		return enrollment;
+//	}
+
+//	public void setEnrollment(Set<User> enrollment) {
+//		this.enrollment = enrollment;
+//	}
 	
 }
