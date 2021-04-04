@@ -4,7 +4,6 @@ import { Container, ListGroup } from "react-bootstrap";
 import "./Dashboard.css";
 import { useHistory } from "react-router-dom";
 import LocalStorageService from "../../services/LocalStorageService";
-// import "bootstrap/dist/css/bootstrap.css";
 import ClassService from "../../services/ClassService";
 
 export default function Dashboard() {
