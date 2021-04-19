@@ -1,6 +1,8 @@
 package com.coffeeclass.main.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,14 @@ public class UserService {
 			return userRepository.findByUsername(username);
 		}catch(Exception e) {
 			return new User();
+		}
+	}
+	
+	public List<User> getAllUser(){
+		try {
+			return userRepository.findAll();
+		}catch(Exception e) {
+			return new ArrayList<User>();
 		}
 	}
 	

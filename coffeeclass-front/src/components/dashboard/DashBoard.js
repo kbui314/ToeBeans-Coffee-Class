@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../navbar/Navbar";
-import { Container, ListGroup } from "react-bootstrap";
+import { Button, Container, ListGroup } from "react-bootstrap";
 import "./Dashboard.css";
 import { useHistory } from "react-router-dom";
 import LocalStorageService from "../../services/LocalStorageService";
 import ClassService from "../../services/ClassService";
+import NewCourseModal from "../NewCourseModal/NewCourseModal";
 
 export default function Dashboard() {
     const history = useHistory();
     const [classList, setClassLists] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     const listClass = ["my-2", "class-list"];
+
+    function addClass() {
+        setShowModal(true);
+    }
 
     useEffect(() => {
         if (LocalStorageService.getToken() === null) {
@@ -54,7 +60,15 @@ export default function Dashboard() {
                         </ListGroup>
                     );
                 })}
+                <Button
+                    onClick={() => {
+                        addClass();
+                    }}
+                >
+                    + Add Class
+                </Button>
             </Container>
+            <NewCourseModal showModal={showModal} onClick={setShowModal} />
         </React.Fragment>
     );
 }

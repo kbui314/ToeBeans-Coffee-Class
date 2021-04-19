@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coffeeclass.main.models.Course;
@@ -44,8 +45,9 @@ public class CourseController {
 		return courseService.getUserCourseList(authentication.getName());
 	}
 	
-//	@GetMapping("/dashboard/classes/{id}")
-//	public List<String> getCourseEnrollment(@PathVariable int id){
-//		return courseService.getEnrollment(id);
-//	}
+	@PostMapping("/addcourse")
+	public Course addNewCourse(@RequestBody Course course) {
+		return courseService.addCourse(course);
+	}
+	
 }

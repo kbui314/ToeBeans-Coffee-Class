@@ -6,7 +6,8 @@ drop table if exits contactform;
 create table courselist(
 	courseid serial primary key,
 	title text not null,
-	description text not null
+	description text not null,
+	timeperiod text not null
 );
 
 create table users(

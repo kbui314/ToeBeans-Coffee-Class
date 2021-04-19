@@ -22,6 +22,15 @@ class ClassService {
     deleteUserCourse(courseId) {
         return axios.post(`${API_URL}/delete/${courseId}`);
     }
+
+    insertNewClass(newClass) {
+        return axios.post(`{API_URL}/addcourse`, {
+            courseid: 0,
+            title: newClass.title,
+            description: newClass.description,
+            timeperiod: newClass.timeperiod,
+        });
+    }
 }
 
 export default new ClassService();
