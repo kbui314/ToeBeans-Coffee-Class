@@ -24,7 +24,7 @@ class ClassService {
     }
 
     insertNewClass(newClass) {
-        return axios.post(`{API_URL}/addcourse`, {
+        return axios.post(`${API_URL}/addcourse`, {
             courseid: 0,
             title: newClass.title,
             description: newClass.description,

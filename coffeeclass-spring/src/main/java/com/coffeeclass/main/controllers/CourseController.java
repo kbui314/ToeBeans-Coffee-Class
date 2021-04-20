@@ -45,7 +45,7 @@ public class CourseController {
 		return courseService.getUserCourseList(authentication.getName());
 	}
 	
-	@PostMapping("/addcourse")
+	@PostMapping("/classes/addcourse")
 	public Course addNewCourse(@RequestBody Course course) {
 		return courseService.addCourse(course);
 	}

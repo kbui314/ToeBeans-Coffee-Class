@@ -36,6 +36,8 @@ export default function Login() {
             if (response !== undefined) {
                 sessionStorage.setItem("access_token", response.data);
                 checkUser();
+            } else {
+                console.log("Incorrect username and/or password");
             }
         });
     }

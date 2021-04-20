@@ -1,7 +1,7 @@
 drop table if exists registration;
 drop table if exists users;
 drop table if exists courselist;
-drop table if exits contactform;
+drop table if exists contactform;
 
 create table courselist(
 	courseid serial primary key,

@@ -57,6 +57,9 @@ export default function Dashboard() {
                             <ListGroup.Item action className="course-title">
                                 {e.title}
                             </ListGroup.Item>
+                            <ListGroup.Item action>
+                                {e.timeperiod}
+                            </ListGroup.Item>
                         </ListGroup>
                     );
                 })}
