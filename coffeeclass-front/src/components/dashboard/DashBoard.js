@@ -35,7 +35,7 @@ export default function Dashboard() {
             });
         };
         getClassList();
-    }, []);
+    }, [showModal]);
 
     return (
         <React.Fragment>

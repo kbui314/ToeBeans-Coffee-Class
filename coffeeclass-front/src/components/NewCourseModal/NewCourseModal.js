@@ -13,6 +13,17 @@ export default function NewCourseModal(props) {
     const [toMinute, setToMinute] = useState("");
     const [toMeridian, setToMeridian] = useState("AM");
 
+    function clearInput() {
+        setClassTitle("");
+        setDescription("");
+        setFromHour("");
+        setFromMinute("");
+        setFromMeridian("AM");
+        setToHour("");
+        setToMinute("");
+        setToMeridian("AM");
+    }
+
     function submitClassForm() {
         let timeperiod = [
             fromHour,
@@ -35,8 +46,14 @@ export default function NewCourseModal(props) {
             } else if (response.data.title === "classTitle") {
                 console.log("Success");
             }
+            clearInput();
             props.onClick(false);
         });
+    }
+
+    function cancelClassForm() {
+        clearInput();
+        props.onClick(false);
     }
 
     return (
@@ -158,7 +175,7 @@ export default function NewCourseModal(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Col>
-                    <Button onClick={() => props.onClick(false)}>Cancel</Button>
+                    <Button onClick={() => cancelClassForm()}>Cancel</Button>
                 </Col>
                 <Col md={{ span: 2, offset: 2 }}>
                     <Button variant="success" onClick={() => submitClassForm()}>
