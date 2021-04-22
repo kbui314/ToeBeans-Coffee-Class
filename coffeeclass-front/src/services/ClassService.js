@@ -31,6 +31,10 @@ class ClassService {
             timeperiod: newClass.timeperiod,
         });
     }
+
+    deleteClass(courseId) {
+        return axios.post(`${API_URL}/deletecourse/${courseId}`);
+    }
 }
 
 export default new ClassService();

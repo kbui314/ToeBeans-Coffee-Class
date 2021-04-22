@@ -93,4 +93,13 @@ public class CourseService {
 		}
 	}
 	
+	public String deleteCourse(int courseId) {
+		try {
+			courseRepository.deleteById(courseId);
+			return "Success";
+		}catch(Exception e) {
+			return "Delete failed.";
+		}
+	}
+	
 }

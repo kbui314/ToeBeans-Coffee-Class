@@ -6,15 +6,41 @@ import { useHistory } from "react-router-dom";
 import LocalStorageService from "../../services/LocalStorageService";
 import ClassService from "../../services/ClassService";
 import NewCourseModal from "../NewCourseModal/NewCourseModal";
+import MessageModal from "../messagemodal/MessageModal";
 
 export default function Dashboard() {
     const history = useHistory();
     const [classList, setClassLists] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [message, setMessage] = useState("");
+    const [messageModal, setMessageModal] = useState(false);
     const listClass = ["my-2", "class-list"];
 
     function addClass() {
         setShowModal(true);
+    }
+
+    function deleteClass(courseId) {
+        ClassService.deleteClass(courseId).then((response) => {
+            if (response !== undefined && response.data === "Success") {
+                refreshClass();
+                setMessage("Delete Class Success");
+            } else {
+                setMessage("Delete Class Failed");
+            }
+            setMessageModal(true);
+        });
+    }
+
+    function refreshClass() {
+        ClassService.getClassList().then((response) => {
+            if (response !== undefined) {
+                response.data.sort(function (a, b) {
+                    return a.courseId - b.courseId;
+                });
+                setClassLists(response.data);
+            }
+        });
     }
 
     useEffect(() => {
@@ -60,6 +86,12 @@ export default function Dashboard() {
                             <ListGroup.Item action>
                                 {e.timeperiod}
                             </ListGroup.Item>
+                            <Button
+                                variant="danger"
+                                onClick={() => deleteClass(e.courseId)}
+                            >
+                                Delete
+                            </Button>
                         </ListGroup>
                     );
                 })}
@@ -72,6 +104,11 @@ export default function Dashboard() {
                 </Button>
             </Container>
             <NewCourseModal showModal={showModal} onClick={setShowModal} />
+            <MessageModal
+                showModal={messageModal}
+                message={message}
+                onClick={() => setMessageModal(false)}
+            />
         </React.Fragment>
     );
 }

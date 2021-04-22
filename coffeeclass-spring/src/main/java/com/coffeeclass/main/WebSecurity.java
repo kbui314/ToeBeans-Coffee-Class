@@ -35,6 +35,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
 			.antMatchers(HttpMethod.POST,SecurityConstants.CONTACT_URL).permitAll()
 			.antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL).permitAll()
 			.antMatchers(HttpMethod.GET, SecurityConstants.DASHBOARD_URL).hasAuthority("ADMIN")
+			.antMatchers(HttpMethod.POST, SecurityConstants.DASHBOARD_URL).hasAuthority("ADMIN")
 			.anyRequest().authenticated()
 			.and()
 			.addFilter(new JWTAuthenticationFilter(authenticationManager()))
