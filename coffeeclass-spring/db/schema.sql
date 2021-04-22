@@ -1,12 +1,13 @@
 drop table if exists registration;
 drop table if exists users;
 drop table if exists courselist;
-drop table if exits contactform;
+drop table if exists contactform;
 
 create table courselist(
 	courseid serial primary key,
 	title text not null,
-	description text not null
+	description text not null,
+	timeperiod text not null
 );
 
 create table users(
@@ -15,7 +16,8 @@ create table users(
 	lastname text not null,
 	username text not null,
 	password text not null,
-	phone text not null
+	phone text not null,
+	usertype text
 );
 
 create table registration(

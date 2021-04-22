@@ -30,6 +30,8 @@ public class User {
 	private String password;
 	@Column(name = "phone")
 	private String phone;
+	@Column(name = "usertype")
+	private String userType;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "registration", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private Set<Course> courses;
@@ -46,9 +48,10 @@ public class User {
 		this.username = user.getUsername();
 		this.password = user.getPassword();
 		this.phone = user.getPhone();
+		this.userType = user.getUserType();
 	}
 
-	public User(int userid, String firstName, String lastName, String username, String password, String phone) {
+	public User(int userid, String firstName, String lastName, String username, String password, String phone, String userType) {
 		super();
 		this.userid = userid;
 		this.firstName = firstName;
@@ -56,6 +59,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.phone = phone;
+		this.userType = userType;
 	}
 
 	public int getUserid() {
@@ -106,6 +110,12 @@ public class User {
 		this.phone = phone;
 	}
 
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
 	public Set<Course> getCourses() {
 		return courses;
 	}

@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavBar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
 import "./Login.css";
 import UserService from "../../services/UserService";
 
@@ -17,12 +16,28 @@ export default function Login() {
         return email.length > 0 && password.length > 0;
     }
 
+    function checkUser() {
+        UserService.verifyUser().then((response) => {
+            if (response !== null) {
+                if (response.data.message === "Success") {
+                    history.push("/dashboard");
+                } else {
+                    history.push("/classes");
+                }
+            } else {
+                history.push("/classes");
+            }
+        });
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
         UserService.loginUser(email, password).then((response) => {
             if (response !== undefined) {
                 sessionStorage.setItem("access_token", response.data);
-                history.push("/classes");
+                checkUser();
+            } else {
+                console.log("Incorrect username and/or password");
             }
         });
     }
@@ -66,7 +81,6 @@ export default function Login() {
                     </p>
                 </Form>
             </div>
-            <Footer />
         </div>
     );
 }

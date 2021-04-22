@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import UserService from "../../services/UserService";
 import "./Signup.css";
 import NavBar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
 
 export default function SignUp() {
     const [firstName, setFirstName] = useState("");
@@ -14,7 +13,7 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const history = useHistory();
-    const link = <a href="/login">sign in</a>;
+    const link = <a href="/login">Sign in</a>;
 
     function validateForm() {
         return (
@@ -101,7 +100,6 @@ export default function SignUp() {
                     <p className="text-center">Already a user? Please {link}</p>
                 </Form>
             </div>
-            <Footer />
         </div>
     );
 }

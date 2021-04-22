@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
 import com.coffeeclass.main.models.Course;
 import com.coffeeclass.main.models.User;
 import com.coffeeclass.main.repository.CourseRepository;
+import com.coffeeclass.main.repository.RegistrationRepository;
 
 @Service
 public class CourseService {
 	
 	@Autowired
 	CourseRepository courseRepository;
+	
+	@Autowired
+	RegistrationRepository registrationRepository;
 	
 	@Autowired
 	UserService userService;
@@ -33,6 +37,15 @@ public class CourseService {
 			return courseRepository.findById(courseId);
 		}catch(Exception e) {
 			return null;
+		}
+	}
+	
+	public Course addCourse(Course newCourse) {
+		try {
+			courseRepository.save(newCourse);
+			return newCourse;
+		}catch(Exception e) {
+			return new Course();
 		}
 	}
 	
@@ -79,4 +92,14 @@ public class CourseService {
 			return new HashSet<Course>();
 		}
 	}
+	
+	public String deleteCourse(int courseId) {
+		try {
+			courseRepository.deleteById(courseId);
+			return "Success";
+		}catch(Exception e) {
+			return "Delete failed.";
+		}
+	}
+	
 }

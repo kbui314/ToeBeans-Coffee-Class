@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import NavBar from "../navbar/Navbar";
 import Form from "react-bootstrap/Form";
-import Footer from "../footer/Footer";
 import UserService from "../../services/UserService";
 import "./Contact.css";
 
@@ -121,7 +120,6 @@ export default function Contact() {
                     </div>
                 </div>
             </Container>
-            <Footer />
         </div>
     );
 }

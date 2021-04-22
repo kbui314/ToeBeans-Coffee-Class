@@ -1,5 +1,10 @@
 package com.coffeeclass.main.services;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,6 +38,7 @@ public class UserService {
 //	}
 	
 	public String createNewUser(User user) {
+		user.setUserType("NORMAL");
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		return String.valueOf(userRepository.save(new User(user)).getUserid());
 	}
@@ -42,6 +48,14 @@ public class UserService {
 			return userRepository.findByUsername(username);
 		}catch(Exception e) {
 			return new User();
+		}
+	}
+	
+	public List<User> getAllUser(){
+		try {
+			return userRepository.findAll();
+		}catch(Exception e) {
+			return new ArrayList<User>();
 		}
 	}
 	
@@ -58,4 +72,19 @@ public class UserService {
 		}
 	}
 	
+	public Map<String, String> verifyUser(String username) {
+		HashMap<String, String> map = new HashMap<>();
+		try {
+			User user = getUser(username);
+			if (user.getUserType().equals("ADMIN")) {
+				map.put("message","Success");
+				return map;
+			}
+			map.put("message", "Failed");
+			return map;
+		}catch(Exception e) {
+			map.put("message", "Failed");
+			return map;
+		}
+	}
 }
