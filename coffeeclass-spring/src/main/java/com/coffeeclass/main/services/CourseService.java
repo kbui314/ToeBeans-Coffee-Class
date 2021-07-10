@@ -15,14 +15,16 @@ import com.coffeeclass.main.repository.RegistrationRepository;
 @Service
 public class CourseService {
 	
-	@Autowired
-	CourseRepository courseRepository;
+	private final CourseRepository courseRepository;
+	private final RegistrationRepository registrationRepository;
+	private final UserService userService;
 	
 	@Autowired
-	RegistrationRepository registrationRepository;
-	
-	@Autowired
-	UserService userService;
+	public CourseService(CourseRepository courseRepository, RegistrationRepository registrationRepository, UserService userService) {
+		this.courseRepository = courseRepository;
+		this.registrationRepository = registrationRepository;
+		this.userService = userService;
+	}
 
 	public List<Course> getCourseList() {
 		try {

@@ -1,6 +1,5 @@
 package com.coffeeclass.main.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,8 +11,11 @@ import com.coffeeclass.main.repository.UserRepository;
 @Service
 public class MyUserDetails implements UserDetailsService{
 
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
+	
+	public MyUserDetails(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
