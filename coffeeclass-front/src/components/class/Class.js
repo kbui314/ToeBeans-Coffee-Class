@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container } from "react-bootstrap";
-import { useParams, useHistory } from "react-router";
+import { useParams } from "react-router";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
 import MessageModal from "../messagemodal/MessageModal";
 import "./Class.css";
 
-export default function Class() {
-    const history = useHistory();
+export default function Class(props) {
     const id = useParams();
     const [courses, setCourse] = useState({});
     const [message, setMessage] = useState("");
@@ -42,13 +41,13 @@ export default function Class() {
 
     function modalConfirm() {
         setShowModal(false);
-        history.push("/classes");
+        props.history.push("/classes");
     }
 
     useEffect(() => {
         const token = sessionStorage.getItem("access_token");
         if (token == null) {
-            history.push("/login");
+            props.history.push("/login");
         } else {
             getClass();
         }
@@ -57,7 +56,7 @@ export default function Class() {
     return (
         <div>
             <div className="coffee-background">
-                <NavBar />
+                <NavBar history={props.history} />
                 <div className="blur-title">
                     <h1 className="class-title">{courses.title}</h1>
                 </div>

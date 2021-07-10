@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [isLogin, setIsLogin] = useState(false);
     const history = useHistory();
 
