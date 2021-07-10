@@ -17,26 +17,17 @@ import com.coffeeclass.main.repository.UserRepository;
 @Service
 public class UserService {
 	
-	@Autowired
-	BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final UserRepository userRepository;
+	private final ContactRepository contactRepository;
 	
 	@Autowired
-	UserRepository userRepository;
-	
-	@Autowired
-	ContactRepository contactRepository;
-	
-//	public String createNewUser(User user) {
-//		try {
-////			String password = user.getPassword();
-//			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//			userRepository.save(user);
-//			return "success";
-//		}catch(Exception e) {
-//			return null;
-//		}
-//	}
-	
+	public UserService(UserRepository userRepository, ContactRepository contactRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.userRepository = userRepository;
+		this.contactRepository = contactRepository;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
+
 	public String createNewUser(User user) {
 		user.setUserType("NORMAL");
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

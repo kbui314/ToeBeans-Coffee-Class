@@ -18,8 +18,11 @@ import com.coffeeclass.main.services.CourseService;
 @RestController
 public class CourseController {
 	
-	@Autowired
-	CourseService courseService;
+	private final CourseService courseService;
+	
+	public CourseController(CourseService courseService) {
+		this.courseService = courseService;
+	}
 	
 	@GetMapping("/classes")
 	public List<Course> getClassList() {
