@@ -6,11 +6,11 @@ import organicLogo from "../../images/organic.png";
 import fairTradeLogo from "../../images/fairtrade.png";
 import "./Landing.css";
 
-export default function Landing() {
+export default function Landing(props) {
     return (
         <div>
             <div id="landing">
-                <NavBar />
+                <NavBar history={props.history} />
                 <h2 id="big-text">Welcome</h2>
             </div>
             <Container className="section">

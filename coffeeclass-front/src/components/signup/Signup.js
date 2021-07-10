@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import UserService from "../../services/UserService";
 import "./Signup.css";
 import NavBar from "../navbar/Navbar";
 
-export default function SignUp() {
+export default function SignUp(props) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
-    const history = useHistory();
     const link = <a href="/login">Sign in</a>;
 
     function validateForm() {
@@ -36,13 +34,13 @@ export default function SignUp() {
             phone: phone,
         };
         UserService.insertNewUser(user).then((response) => {
-            history.push("/login");
+            props.history.push("/login");
         });
     }
 
     return (
         <div>
-            <NavBar />
+            <NavBar history={props.history} />
             <div className="signUpTitle">
                 <h1>Register</h1>
             </div>

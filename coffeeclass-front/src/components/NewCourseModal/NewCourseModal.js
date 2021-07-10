@@ -6,21 +6,21 @@ import "./NewCourseModal.css";
 export default function NewCourseModal(props) {
     const [classTitle, setClassTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [fromHour, setFromHour] = useState("");
-    const [fromMinute, setFromMinute] = useState("");
+    const [fromHour, setFromHour] = useState("01");
+    const [fromMinute, setFromMinute] = useState("00");
     const [fromMeridian, setFromMeridian] = useState("AM");
-    const [toHour, setToHour] = useState("");
-    const [toMinute, setToMinute] = useState("");
+    const [toHour, setToHour] = useState("01");
+    const [toMinute, setToMinute] = useState("00");
     const [toMeridian, setToMeridian] = useState("AM");
 
     function clearInput() {
         setClassTitle("");
         setDescription("");
-        setFromHour("");
-        setFromMinute("");
+        setFromHour("01");
+        setFromMinute("00");
         setFromMeridian("AM");
-        setToHour("");
-        setToMinute("");
+        setToHour("01");
+        setToMinute("00");
         setToMeridian("AM");
     }
 
