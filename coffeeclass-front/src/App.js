@@ -40,13 +40,37 @@ export default function App() {
     );
     return (
         <div>
-            <Route exact path="/" component={Landing} />
+            <Route
+                exact
+                path="/"
+                render={(props) => <Landing {...props} history={history} />}
+            />
             <Route path="/contact" component={Contact} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/classes" component={ClassList} />
-            <Route path="/class/:id" component={Class} />
-            <Route path="/dashboard" component={Dashboard} />
+            {/* <Route path="/login" component={Login} /> */}
+            <Route
+                path="/login"
+                render={(props) => <Login {...props} history={history} />}
+            />
+            {/* <Route path="/signup" component={SignUp} /> */}
+            <Route
+                path="/signup"
+                render={(props) => <SignUp {...props} history={history} />}
+            />
+            {/* <Route path="/classes" component={ClassList} /> */}
+            <Route
+                path="/classes"
+                render={(props) => <ClassList {...props} history={history} />}
+            />
+            {/* <Route path="/class/:id" component={Class} /> */}
+            <Route
+                path="/class/:id"
+                render={(props) => <Class {...props} history={history} />}
+            />
+            {/* <Route path="/dashboard" component={Dashboard} /> */}
+            <Route
+                path="/dashboard"
+                render={(props) => <Dashboard {...props} history={history} />}
+            />
             <Footer />
         </div>
     );

@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavBar from "../navbar/Navbar";
 import "./Login.css";
 import UserService from "../../services/UserService";
 
-export default function Login() {
+export default function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const history = useHistory();
     const register = <a href="/signup">register</a>;
 
     function validateForm() {
@@ -20,12 +18,12 @@ export default function Login() {
         UserService.verifyUser().then((response) => {
             if (response !== null) {
                 if (response.data.message === "Success") {
-                    history.push("/dashboard");
+                    props.history.push("/dashboard");
                 } else {
-                    history.push("/classes");
+                    props.history.push("/classes");
                 }
             } else {
-                history.push("/classes");
+                props.history.push("/classes");
             }
         });
     }
@@ -45,7 +43,7 @@ export default function Login() {
     return (
         <div>
             <div id="header-back-section">
-                <NavBar />
+                <NavBar history={props.history} />
             </div>
             <div className="loginTitle">
                 <h1>Log In</h1>

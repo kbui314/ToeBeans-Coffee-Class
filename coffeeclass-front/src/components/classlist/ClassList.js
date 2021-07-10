@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { Button, Container, ListGroup } from "react-bootstrap";
 import ClassService from "../../services/ClassService";
 import NavBar from "../navbar/Navbar";
@@ -7,8 +6,7 @@ import "./ClassList.css";
 import "bootstrap/dist/css/bootstrap.css";
 import MessageModal from "../messagemodal/MessageModal";
 
-export default function ClassList() {
-    const history = useHistory();
+export default function ClassList(props) {
     const [classList, setClassList] = useState([]);
     const [userClassList, setUserClassList] = useState([]);
     const listClass = ["my-2", "class-list"];
@@ -27,7 +25,7 @@ export default function ClassList() {
     }
 
     function viewCourse(id) {
-        history.push(`/class/${id}`);
+        props.history.push(`/class/${id}`);
     }
 
     function refreshUserClass() {
@@ -42,7 +40,7 @@ export default function ClassList() {
     }
 
     function goToContact() {
-        history.push("/contact");
+        props.history.push("/contact");
     }
 
     function deleteCourse(courseId) {
@@ -54,7 +52,6 @@ export default function ClassList() {
                         if (list[i].courseId === courseId) {
                             list.splice(i, 1);
                             setMessage("Delete Success");
-                            // setUserClassList(list);
                             break;
                         }
                     }
@@ -74,17 +71,17 @@ export default function ClassList() {
     useEffect(() => {
         const token = sessionStorage.getItem("access_token");
         if (token == null) {
-            history.push("/login");
+            props.history.push("/login");
         } else {
             refreshClass();
             refreshUserClass();
         }
-    }, [history]);
+    }, [props.history]);
 
     return (
         <div>
             <div>
-                <NavBar />
+                <NavBar history={props.history} />
             </div>
             <Container>
                 <div>
@@ -109,7 +106,7 @@ export default function ClassList() {
                 </div>
             </Container>
             <Container>
-                <div>
+                <div className="classlist-div">
                     <h2>Upcoming Classes</h2>
                     {userClassList.map((e) => {
                         return (

@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../navbar/Navbar";
 import { Button, Container, ListGroup } from "react-bootstrap";
 import "./Dashboard.css";
-import { useHistory } from "react-router-dom";
 import LocalStorageService from "../../services/LocalStorageService";
 import ClassService from "../../services/ClassService";
 import NewCourseModal from "../NewCourseModal/NewCourseModal";
 import MessageModal from "../messagemodal/MessageModal";
 
-export default function Dashboard() {
-    const history = useHistory();
+export default function Dashboard(props) {
     const [classList, setClassLists] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [message, setMessage] = useState("");
@@ -45,9 +43,9 @@ export default function Dashboard() {
 
     useEffect(() => {
         if (LocalStorageService.getToken() === null) {
-            history.push("/login");
+            props.history.push("/login");
         }
-    }, [history]);
+    }, [props.history]);
 
     useEffect(() => {
         const getClassList = () => {
@@ -64,9 +62,9 @@ export default function Dashboard() {
     }, [showModal]);
 
     return (
-        <React.Fragment>
+        <div className="main-dashboard">
             <div>
-                <NavBar />
+                <NavBar history={props.history} />
             </div>
             <Container>
                 <h2>Class List</h2>
@@ -109,6 +107,6 @@ export default function Dashboard() {
                 message={message}
                 onClick={() => setMessageModal(false)}
             />
-        </React.Fragment>
+        </div>
     );
 }
