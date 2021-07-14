@@ -51,9 +51,9 @@ public class User {
 		this.userType = user.getUserType();
 	}
 
-	public User(int userid, String firstName, String lastName, String username, String password, String phone, String userType) {
+	public User(String firstName, String lastName, String username, String password, String phone, String userType) {
 		super();
-		this.userid = userid;
+//		this.userid = userid;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;

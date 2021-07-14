@@ -39,9 +39,9 @@ public class Course {
 		super();
 	}
 
-	public Course(int courseid, String title, String description, String timeperiod) {
+	public Course(String title, String description, String timeperiod) {
 		super();
-		this.courseid = courseid;
+//		this.courseid = courseid;
 		this.title = title;
 		this.description = description;
 		this.timeperiod = timeperiod;
