@@ -1,5 +1,6 @@
 package com.coffeeclass.main.models;
 
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -129,4 +130,25 @@ public class User {
 		courseList.add(course);
 		setCourses(courseList);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(courses, firstName, lastName, password, phone, userType, userid, username);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(courses, other.courses) && Objects.equals(firstName, other.firstName)
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
+				&& Objects.equals(phone, other.phone) && Objects.equals(userType, other.userType)
+				&& userid == other.userid && Objects.equals(username, other.username);
+	}
+	
 }
