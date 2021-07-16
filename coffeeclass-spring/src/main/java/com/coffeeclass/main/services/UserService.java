@@ -29,9 +29,15 @@ public class UserService {
 	}
 
 	public String createNewUser(User user) {
-		user.setUserType("NORMAL");
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		return String.valueOf(userRepository.save(new User(user)).getUserid());
+		try {
+			user.setUserType("NORMAL");
+			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+	//		return String.valueOf(userRepository.save(new User(user)).getUserid());
+			userRepository.save(user);
+			return "success";
+		}catch(Exception e) {
+			return "failed";
+		}
 	}
 	
 	public User getUser(String username) {
@@ -59,7 +65,7 @@ public class UserService {
 			contactRepository.save(contactForm);
 			return contactForm;
 		}catch(Exception e) {
-			return new ContactForm(0,"","","","");
+			return new ContactForm("","","","");
 		}
 	}
 	
