@@ -1,5 +1,7 @@
 package com.coffeeclass.main.models;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,9 +27,8 @@ public class ContactForm {
 	public ContactForm() {
 		super();
 	}
-	public ContactForm(int formid, String firstName, String lastName, String email, String description) {
+	public ContactForm(String firstName, String lastName, String email, String description) {
 		super();
-		this.formid = formid;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -62,6 +63,23 @@ public class ContactForm {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, email, firstName, formid, lastName);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ContactForm other = (ContactForm) obj;
+		return Objects.equals(description, other.description) && Objects.equals(email, other.email)
+				&& Objects.equals(firstName, other.firstName) && formid == other.formid
+				&& Objects.equals(lastName, other.lastName);
 	}
 	
 }

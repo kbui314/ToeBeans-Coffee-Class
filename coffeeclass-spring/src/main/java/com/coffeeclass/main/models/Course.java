@@ -1,6 +1,7 @@
 package com.coffeeclass.main.models;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,9 +40,9 @@ public class Course {
 		super();
 	}
 
-	public Course(int courseid, String title, String description, String timeperiod) {
+	public Course(String title, String description, String timeperiod) {
 		super();
-		this.courseid = courseid;
+//		this.courseid = courseid;
 		this.title = title;
 		this.description = description;
 		this.timeperiod = timeperiod;
@@ -76,6 +77,25 @@ public class Course {
 	}
 	public void setTimeperiod(String timeperiod) {
 		this.timeperiod = timeperiod;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(courseid, description, enrollment, timeperiod, title);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Course other = (Course) obj;
+		return courseid == other.courseid && Objects.equals(description, other.description)
+				&& Objects.equals(enrollment, other.enrollment) && Objects.equals(timeperiod, other.timeperiod)
+				&& Objects.equals(title, other.title);
 	}
 
 //	public Set<User> getEnrollment() {
