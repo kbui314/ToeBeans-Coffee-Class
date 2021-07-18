@@ -2,12 +2,17 @@ package com.coffeeclass.main.models;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -31,11 +36,12 @@ public class Course {
 	@Transient
 	private List<User> enrollment;
 	
-//	@Column(name="enrollment")
 //	@ManyToMany(fetch = FetchType.EAGER)
-//	@JoinTable(name = "registration", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-//	private Set<User> enrollment;
-
+//	@JoinTable(name="registration", 
+//	joinColumns = @JoinColumn(name = "course_id"), 
+//	inverseJoinColumns = @JoinColumn(name = "user_id"))
+//	private Set<User> members;
+	
 	public Course() {
 		super();
 	}
@@ -98,12 +104,11 @@ public class Course {
 				&& Objects.equals(title, other.title);
 	}
 
-//	public Set<User> getEnrollment() {
-//		return enrollment;
+//	public Set<User> getMembers() {
+//		return members;
 //	}
-
-//	public void setEnrollment(Set<User> enrollment) {
-//		this.enrollment = enrollment;
+//
+//	public void setMembers(Set<User> members) {
+//		this.members = members;
 //	}
-	
 }
