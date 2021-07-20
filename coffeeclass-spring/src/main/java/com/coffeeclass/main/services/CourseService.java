@@ -1,6 +1,5 @@
 package com.coffeeclass.main.services;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.coffeeclass.main.models.Course;
-import com.coffeeclass.main.models.Registration;
 import com.coffeeclass.main.models.User;
 import com.coffeeclass.main.repository.CourseRepository;
 import com.coffeeclass.main.repository.RegistrationRepository;
@@ -105,13 +103,5 @@ public class CourseService {
 			return "Delete failed.";
 		}
 	}
-	
-//	public Set<User> getEnlistedUserOnCourse(int courseId){
-//		Course course = getCourse(courseId);
-//		Set<User> list = course.getMembers();
-//		List<Registration> enrolledUser = new ArrayList<>();
-//		enrolledUser = registrationRepository.findAllByCourseid(courseId);
-//		return null;
-//	}
 	
 }
