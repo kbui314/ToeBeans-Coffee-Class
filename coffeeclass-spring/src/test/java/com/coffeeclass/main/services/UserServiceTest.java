@@ -16,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,6 +35,13 @@ class UserServiceTest {
 	private ContactRepository contactRepository;
 	@Mock
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	@Captor
+	ArgumentCaptor<User> userCaptor;
+	
+	@Captor
+	ArgumentCaptor<ContactForm> contactFormCaptor;
+
 	private UserService testUserService;
 
 	@BeforeEach
@@ -50,9 +58,8 @@ class UserServiceTest {
 		testUserService.createNewUser(user);
 
 		// then
-		ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
-		verify(userRepository).save(userArgumentCaptor.capture());
-		User capturedUser = userArgumentCaptor.getValue();
+		verify(userRepository).save(userCaptor.capture());
+		User capturedUser = userCaptor.getValue();
 		assertThat(capturedUser).isEqualTo(user);
 	}
 
@@ -125,9 +132,8 @@ class UserServiceTest {
 		// when
 		testUserService.saveUser(user);
 		// then
-		ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
-		verify(userRepository).save(userArgumentCaptor.capture());
-		User capturedUser = userArgumentCaptor.getValue();
+		verify(userRepository).save(userCaptor.capture());
+		User capturedUser = userCaptor.getValue();
 		assertThat(capturedUser).isEqualTo(user);
 	}
 
@@ -138,9 +144,8 @@ class UserServiceTest {
 		// when
 		testUserService.createContactForm(contactForm);
 		// then
-		ArgumentCaptor<ContactForm> contactFormArgumentCaptor = ArgumentCaptor.forClass(ContactForm.class);
-		verify(contactRepository).save(contactFormArgumentCaptor.capture());
-		ContactForm capturedContactForm = contactFormArgumentCaptor.getValue();
+		verify(contactRepository).save(contactFormCaptor.capture());
+		ContactForm capturedContactForm = contactFormCaptor.getValue();
 		assertThat(capturedContactForm).isEqualTo(contactForm);
 
 	}
